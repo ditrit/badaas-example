@@ -1,11 +1,31 @@
 # Example of BadAas authentication and object storage
 
-<!-- TODO  how to run -->
+## Set up
+
+This project uses `badgen` to generate the files that allow us to run this example. For installing it, use:
+
+<!-- TODO remove commit when badgen has a first tagged version -->
+```bash
+go install github.com/ditrit/badaas/tools/badgen@dbd7e55
+```
+
+Then generate files to make this project work with `cockroach` as database:
+
+```bash
+badgen gen --db_provider cockroachdb
+```
+
+For more information about `badgen` refer to [BadGen Docs](https://github.com/ditrit/badaas/tools/badgen/README.md).
+
+Finally, you can run the api with:
+
+```bash
+./badaas/run.sh
+```
 
 ## Model definition
 
-We need to declare our models for the objects.
-As an example we will use some UML to model the objects for this demo.
+This example defines the following model [here](example.go):
 
 ```mermaid
 classDiagram
@@ -27,8 +47,7 @@ classDiagram
 
 The Users are stored on a classic sql table outside of the object storage engine (EAV), so the userID will be a value. We will use the Profile object to store info about the users.
 
-For now we need to setup the schema manually using a invoke function that will run at the initialization of the programme. The definition can be found [here](example.go#L104).
-Make sure that the database you are gonna use is empty.
+For now we need to setup the schema manually using a invoke function that will run at the initialization of the programme. Make sure that the database you are gonna use is empty.
 
 ## Authentication
 
@@ -39,7 +58,28 @@ The default credentials for the user are ̀`admin-no-reply@badaas.com` and `admi
 
 httpie util will be used in the examples below, but it works with curl or any similar tools.
 
-Let's first start by getting all the profiles: `http localhost:8000/objects/profile`
+Let's first start by checking the route this example adds:
+
+```bash
+http localhost:8000/hello
+```
+
+```json
+HTTP/1.1 200 OK
+Content-Length: 13
+Content-Type: application/json
+Date: Thu, 04 May 2023 09:32:29 GMT
+
+"hello world"
+```
+
+Then, we can test the routes provided by BadAss
+
+Get all the profiles:
+
+```bash
+http localhost:8000/objects/profile
+```
 
 ```json
 HTTP/1.1 200 OK
@@ -61,7 +101,11 @@ Date: Thu, 05 Jan 2023 11:53:35 GMT
 ]
 ```
 
-Let's get all the posts posted by this user: `http GET localhost:8000/objects/post ownerID=wowASuperCoolUserID`
+Get all the posts posted by this user:
+
+```bash
+http GET localhost:8000/objects/post ownerID=wowASuperCoolUserID
+```
 
 ```json
 HTTP/1.1 200 OK

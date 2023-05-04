@@ -12,7 +12,7 @@ import (
 	"go.uber.org/zap"
 )
 
-// TODO cambiar esto
+// TODO
 var rootCfg = verdeter.BuildVerdeterCommand(verdeter.VerdeterConfig{
 	Use:   "badaas",
 	Short: "Backend and Distribution as a Service",

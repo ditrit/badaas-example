@@ -16,7 +16,6 @@ func NewHelloController() HelloController {
 	return &helloControllerImpl{}
 }
 
-// Return the badaas server information
 func (*helloControllerImpl) SayHello(response http.ResponseWriter, r *http.Request) (any, httperrors.HTTPError) {
 	return "hello world", nil
 }
