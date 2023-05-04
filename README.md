@@ -1,27 +1,36 @@
 # Example of BadAas authentication and object storage
 
+- [Example of BadAas authentication and object storage](#example-of-badaas-authentication-and-object-storage)
+  - [Set up](#set-up)
+  - [Model definition](#model-definition)
+  - [Authentication](#authentication)
+  - [Test it](#test-it)
+  - [Explanation](#explanation)
+
 ## Set up
 
-This project uses `badgen` to generate the files that allow us to run this example. For installing it, use:
+This project uses `badctl` to generate the files that allow us to run this example. For installing it, use:
 
-<!-- TODO remove commit when badgen has a first tagged version -->
+<!-- TODO remove commit when badctl has a first tagged version -->
 ```bash
-go install github.com/ditrit/badaas/tools/badgen@dbd7e55
+go install github.com/ditrit/badaas/tools/badctl@bef1116
 ```
 
 Then generate files to make this project work with `cockroach` as database:
 
 ```bash
-badgen gen --db_provider cockroachdb
+badctl gen --db_provider cockroachdb
 ```
 
-For more information about `badgen` refer to [BadGen Docs](https://github.com/ditrit/badaas/tools/badgen/README.md).
+For more information about `badctl` refer to [badctl Docs](https://github.com/ditrit/badaas/tools/badctl/README.md).
 
 Finally, you can run the api with:
 
 ```bash
-./badaas/run.sh
+badctl run
 ```
+
+The api will be available at <http://localhost:8000>.
 
 ## Model definition
 
@@ -127,3 +136,7 @@ Date: Fri, 06 Jan 2023 08:20:33 GMT
     }
 ]
 ```
+
+## Explanation
+
+To understand why this example was made in this way refer to [BadAas Docs](https://github.com/ditrit/badaas/README.md#step-by-step-instructions).
