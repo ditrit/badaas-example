@@ -13,7 +13,7 @@ This project uses `badctl` to generate the files that allow us to run this examp
 
 <!-- TODO remove commit when badctl has a first tagged version -->
 ```bash
-go install github.com/ditrit/badaas/tools/badctl@bef1116
+go install github.com/ditrit/badaas/tools/badctl@cbd4c9e035709de25df59ec17e4b302b3a7b9931
 ```
 
 Then generate files to make this project work with `cockroach` as database:

@@ -3,8 +3,9 @@ package main
 import (
 	"net/http"
 
+	"github.com/Masterminds/semver/v3"
 	"github.com/ditrit/badaas"
-	"github.com/ditrit/badaas/router"
+	badaasControllers "github.com/ditrit/badaas/controllers"
 	"github.com/ditrit/verdeter"
 	"github.com/spf13/cobra"
 	"go.uber.org/fx"
@@ -36,10 +37,11 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 			return &fxevent.ZapLogger{Logger: logger}
 		}),
 
+		fx.Provide(NewAPIVersion),
 		// add routes provided by badaas
-		fx.Invoke(router.AddInfoRoutes),
-		fx.Invoke(router.AddLoginRoutes),
-		fx.Invoke(router.AddCRUDRoutes),
+		badaasControllers.InfoControllerModule,
+		badaasControllers.AuthControllerModule,
+		badaasControllers.EAVControllerModule,
 
 		// start example routes and data
 		fx.Provide(NewHelloController),
@@ -51,4 +53,8 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 		// Finally: we invoke the newly created server
 		fx.Invoke(func(*http.Server) { /* we need this function to be empty*/ }),
 	).Run()
+}
+
+func NewAPIVersion() *semver.Version {
+	return semver.MustParse("0.0.0-unreleased")
 }

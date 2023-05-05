@@ -3,11 +3,15 @@ module github.com/ditrit/badaas-example
 go 1.18
 
 require (
-	github.com/ditrit/badaas v0.0.0-20230504081805-a8049772bb63
+	github.com/Masterminds/semver/v3 v3.2.1
+	github.com/ditrit/badaas v0.0.0-20230505151232-cbd4c9e03570
 	github.com/ditrit/verdeter v0.4.0
+	github.com/gorilla/handlers v1.5.1
+	github.com/gorilla/mux v1.8.0
 	github.com/spf13/cobra v1.7.0
 	go.uber.org/fx v1.19.2
 	go.uber.org/zap v1.23.0
+	gorm.io/gorm v1.24.1
 )
 
 require (
@@ -17,8 +21,6 @@ require (
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/goph/emperror v0.17.2 // indirect
-	github.com/gorilla/handlers v1.5.1
-	github.com/gorilla/mux v1.8.0
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
@@ -59,5 +61,4 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gorm.io/driver/postgres v1.4.5 // indirect
-	gorm.io/gorm v1.24.1
 )
