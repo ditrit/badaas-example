@@ -12,11 +12,10 @@ import (
 	"go.uber.org/zap"
 )
 
-// TODO
 var rootCfg = verdeter.BuildVerdeterCommand(verdeter.VerdeterConfig{
-	Use:   "badaas",
-	Short: "Backend and Distribution as a Service",
-	Long:  "Badaas stands for Backend and Distribution as a Service.",
+	Use:   "badaas-example",
+	Short: "Example of BadAss",
+	Long:  "A HTTP server build over BadAas that uses its Login and Object Storage features",
 	Run:   runHTTPServer,
 })
 
