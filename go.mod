@@ -1,6 +1,6 @@
 module github.com/ditrit/badaas-example
 
-go 1.20
+go 1.18
 
 require (
 	github.com/ditrit/badaas v0.0.0-20230504081805-a8049772bb63
@@ -9,7 +9,6 @@ require (
 	go.uber.org/fx v1.19.2
 	go.uber.org/zap v1.23.0
 )
-
 
 require (
 	github.com/Masterminds/squirrel v1.5.3 // indirect
