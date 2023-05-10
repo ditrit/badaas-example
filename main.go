@@ -6,7 +6,9 @@ import (
 	"github.com/Masterminds/semver/v3"
 	"github.com/ditrit/badaas"
 	badaasControllers "github.com/ditrit/badaas/controllers"
+	badaasModels "github.com/ditrit/badaas/persistence/models"
 	"github.com/ditrit/verdeter"
+	"github.com/google/uuid"
 	"github.com/spf13/cobra"
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxevent"
@@ -40,13 +42,22 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 		fx.Provide(NewAPIVersion),
 		// add routes provided by badaas
 		badaasControllers.InfoControllerModule,
-		badaasControllers.AuthControllerModule,
+		// badaasControllers.AuthControllerModule,
 		badaasControllers.EAVControllerModule,
 
-		// start example routes and data
+		// start example routes
 		fx.Provide(NewHelloController),
 		fx.Invoke(AddExampleRoutes),
-		fx.Invoke(StartExample),
+
+		// start example eav data
+		// fx.Invoke(StartExample),
+
+		// start example data
+		// TODO que pasa si quiero el service pero no el controller?
+		badaasControllers.GetCRUDModule[badaasModels.Product, uuid.UUID](),
+		badaasControllers.GetCRUDModule[badaasModels.Sale, uuid.UUID](),
+		fx.Provide(NewEntityMapping),
+		badaasControllers.CRUDControllerModule,
 
 		// create httpServer
 		fx.Provide(NewHTTPServer),
@@ -57,4 +68,20 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 
 func NewAPIVersion() *semver.Version {
 	return semver.MustParse("0.0.0-unreleased")
+}
+
+type EntityMappingParams struct {
+	fx.In
+
+	// TODO ver como sacar este models.
+	// TODO esto hasta se podria hacer automaticamente
+	ProductsCRUDController badaasControllers.CRUDController `name:"models.ProductCRUDController"`
+	SalesCRUDController    badaasControllers.CRUDController `name:"models.SaleCRUDController"`
+}
+
+func NewEntityMapping(params EntityMappingParams) map[string]badaasControllers.CRUDController {
+	return map[string]badaasControllers.CRUDController{
+		"products": params.ProductsCRUDController,
+		"sales":    params.SalesCRUDController,
+	}
 }
