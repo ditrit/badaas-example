@@ -8,7 +8,6 @@ import (
 	badaasControllers "github.com/ditrit/badaas/controllers"
 	badaasModels "github.com/ditrit/badaas/persistence/models"
 	"github.com/ditrit/verdeter"
-	"github.com/google/uuid"
 	"github.com/spf13/cobra"
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxevent"
@@ -53,9 +52,8 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 		// fx.Invoke(CreateEAVCRUDObjects),
 
 		// start example data
-		// TODO que pasa si quiero el service pero no el controller?
-		badaasControllers.GetCRUDModule[badaasModels.Product, uuid.UUID](),
-		badaasControllers.GetCRUDModule[badaasModels.Sale, uuid.UUID](),
+		badaasControllers.GetCRUDModule[badaasModels.Product](),
+		badaasControllers.GetCRUDModule[badaasModels.Sale](),
 		fx.Provide(NewEntityMapping),
 		badaasControllers.CRUDControllerModule,
 		// fx.Invoke(CreateCRUDObjects),
