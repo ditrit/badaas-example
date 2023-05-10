@@ -2,12 +2,15 @@ package main
 
 import (
 	"github.com/ditrit/badaas/persistence/models"
+	"github.com/ditrit/badaas/services"
+	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
 
-func StartExample(logger *zap.Logger, db *gorm.DB) error {
-	logger.Sugar().Info("Setting up Posts example")
+// TODO volver a poner los errores pero que ande cuando ya esten en la base
+func CreateEAVCRUDObjects(logger *zap.Logger, db *gorm.DB) {
+	logger.Sugar().Info("Setting up Posts EAV example")
 
 	userID := "wowASuperCoolUserID"
 
@@ -55,10 +58,7 @@ func StartExample(logger *zap.Logger, db *gorm.DB) error {
 		userIDVal,
 	)
 
-	err := db.Create(adminProfile).Error
-	if err != nil {
-		return err
-	}
+	_ = db.Create(adminProfile).Error
 
 	// creation of Post type and associated attributes
 	postType := &models.EntityType{
@@ -105,12 +105,55 @@ func StartExample(logger *zap.Logger, db *gorm.DB) error {
 		titleVal, bodyVal, ownerVal,
 	)
 
-	err = db.Create(whyCatsLikeMice).Error
-	if err != nil {
-		return err
+	_ = db.Create(whyCatsLikeMice).Error
+	logger.Sugar().Info("Finished creating Posts EAV example")
+}
+
+func CreateCRUDObjects(
+	logger *zap.Logger,
+	db *gorm.DB,
+	crudProductService services.CRUDService[models.Product, uuid.UUID],
+) {
+	logger.Sugar().Info("Setting up CRUD example")
+
+	product1, _ := crudProductService.CreateEntity(map[string]any{
+		"int": 1,
+	})
+
+	product2, _ := crudProductService.CreateEntity(map[string]any{
+		"int": 2,
+	})
+
+	company1 := &models.Company{
+		Name: "ditrit",
 	}
+	_ = db.Create(company1).Error
+	company2 := &models.Company{
+		Name: "orness",
+	}
+	_ = db.Create(company2).Error
 
-	logger.Sugar().Info("Finished populating the database")
+	seller1 := &models.Seller{
+		Name:      "franco",
+		CompanyID: &company1.ID,
+	}
+	_ = db.Create(seller1).Error
+	seller2 := &models.Seller{
+		Name:      "agustin",
+		CompanyID: &company2.ID,
+	}
+	_ = db.Create(seller2).Error
 
-	return nil
+	sale1 := &models.Sale{
+		Product: product1,
+		Seller:  seller1,
+	}
+	_ = db.Create(sale1).Error
+	sale2 := &models.Sale{
+		Product: product2,
+		Seller:  seller2,
+	}
+	_ = db.Create(sale2).Error
+
+	logger.Sugar().Info("Finished creating CRUD example")
 }

@@ -50,7 +50,7 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 		fx.Invoke(AddExampleRoutes),
 
 		// start example eav data
-		// fx.Invoke(StartExample),
+		// fx.Invoke(CreateEAVCRUDObjects),
 
 		// start example data
 		// TODO que pasa si quiero el service pero no el controller?
@@ -58,6 +58,7 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 		badaasControllers.GetCRUDModule[badaasModels.Sale, uuid.UUID](),
 		fx.Provide(NewEntityMapping),
 		badaasControllers.CRUDControllerModule,
+		// fx.Invoke(CreateCRUDObjects),
 
 		// create httpServer
 		fx.Provide(NewHTTPServer),
@@ -81,7 +82,7 @@ type EntityMappingParams struct {
 
 func NewEntityMapping(params EntityMappingParams) map[string]badaasControllers.CRUDController {
 	return map[string]badaasControllers.CRUDController{
-		"products": params.ProductsCRUDController,
-		"sales":    params.SalesCRUDController,
+		"product": params.ProductsCRUDController,
+		"sale":    params.SalesCRUDController,
 	}
 }
