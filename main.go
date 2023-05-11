@@ -5,8 +5,9 @@ import (
 
 	"github.com/Masterminds/semver/v3"
 	"github.com/ditrit/badaas"
+	"github.com/ditrit/badaas-example/controllers"
+	"github.com/ditrit/badaas-example/models"
 	badaasControllers "github.com/ditrit/badaas/controllers"
-	badaasModels "github.com/ditrit/badaas/persistence/models"
 	"github.com/ditrit/verdeter"
 	"github.com/spf13/cobra"
 	"go.uber.org/fx"
@@ -45,15 +46,17 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 		badaasControllers.EAVControllerModule,
 
 		// start example routes
-		fx.Provide(NewHelloController),
+		fx.Provide(controllers.NewHelloController),
 		fx.Invoke(AddExampleRoutes),
 
 		// start example eav data
 		// fx.Invoke(CreateEAVCRUDObjects),
 
 		// start example data
-		badaasControllers.GetCRUDModule[badaasModels.Product](),
-		badaasControllers.GetCRUDModule[badaasModels.Sale](),
+		badaasControllers.GetCRUDControllerModule[models.Company](),
+		badaasControllers.GetCRUDControllerModule[models.Product](),
+		badaasControllers.GetCRUDControllerModule[models.Seller](),
+		badaasControllers.GetCRUDControllerModule[models.Sale](),
 		fx.Provide(NewEntityMapping),
 		badaasControllers.CRUDControllerModule,
 		// fx.Invoke(CreateCRUDObjects),

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/ditrit/badaas-example/controllers"
 	"github.com/ditrit/badaas/router/middlewares"
 	"github.com/gorilla/mux"
 )
@@ -9,7 +10,7 @@ import (
 func AddExampleRoutes(
 	router *mux.Router,
 	jsonController middlewares.JSONController,
-	helloController HelloController,
+	helloController controllers.HelloController,
 ) {
 	router.HandleFunc(
 		"/hello",

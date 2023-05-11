@@ -1,7 +1,8 @@
 package main
 
 import (
-	"github.com/ditrit/badaas/persistence/models"
+	"github.com/ditrit/badaas-example/models"
+	badaasModels "github.com/ditrit/badaas/persistence/models"
 	"github.com/ditrit/badaas/services"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
@@ -15,27 +16,27 @@ func CreateEAVCRUDObjects(logger *zap.Logger, db *gorm.DB) {
 	userID := "wowASuperCoolUserID"
 
 	// creation of Profile type and associated attributes
-	profileType := &models.EntityType{
+	profileType := &badaasModels.EntityType{
 		Name: "profile",
 	}
-	displayNameAttr := &models.Attribute{
+	displayNameAttr := &badaasModels.Attribute{
 		EntityTypeID: profileType.ID,
 		Name:         "displayName",
-		ValueType:    models.StringValueType,
+		ValueType:    badaasModels.StringValueType,
 		Required:     true,
 	}
-	urlPicAttr := &models.Attribute{
+	urlPicAttr := &badaasModels.Attribute{
 		EntityTypeID:  profileType.ID,
 		Name:          "urlPic",
-		ValueType:     models.StringValueType,
+		ValueType:     badaasModels.StringValueType,
 		Required:      false,
 		Default:       true,
 		DefaultString: "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fimg.favpng.com%2F17%2F19%2F1%2Fbusiness-google-account-organization-service-png-favpng-sUuKmS4aDNRzxDKx8kJciXdFp.jpg&sp=1672915826Tc106d9b5cab08d9d380ce6fdc9564b199a49e494a069e1923c21aa202ba3ed73", //nolint:lll
 	}
-	userIDAttr := &models.Attribute{
+	userIDAttr := &badaasModels.Attribute{
 		EntityTypeID: profileType.ID,
 		Name:         "userId",
-		ValueType:    models.StringValueType,
+		ValueType:    badaasModels.StringValueType,
 		Required:     true,
 	}
 	profileType.Attributes = append(profileType.Attributes,
@@ -45,13 +46,13 @@ func CreateEAVCRUDObjects(logger *zap.Logger, db *gorm.DB) {
 	)
 
 	// instantiation of a Profile
-	adminProfile := &models.Entity{
+	adminProfile := &badaasModels.Entity{
 		EntityTypeID: profileType.ID,
 		EntityType:   profileType,
 	}
-	displayNameVal, _ := models.NewStringValue(displayNameAttr, "The Super Admin")
-	userPicVal, _ := models.NewNullValue(urlPicAttr)
-	userIDVal, _ := models.NewStringValue(userIDAttr, userID)
+	displayNameVal, _ := badaasModels.NewStringValue(displayNameAttr, "The Super Admin")
+	userPicVal, _ := badaasModels.NewNullValue(urlPicAttr)
+	userIDVal, _ := badaasModels.NewStringValue(userIDAttr, userID)
 	adminProfile.Fields = append(adminProfile.Fields,
 		displayNameVal,
 		userPicVal,
@@ -61,24 +62,24 @@ func CreateEAVCRUDObjects(logger *zap.Logger, db *gorm.DB) {
 	_ = db.Create(adminProfile).Error
 
 	// creation of Post type and associated attributes
-	postType := &models.EntityType{
+	postType := &badaasModels.EntityType{
 		Name: "post",
 	}
-	titleAttr := &models.Attribute{
+	titleAttr := &badaasModels.Attribute{
 		EntityTypeID: postType.ID,
 		Name:         "title",
-		ValueType:    models.StringValueType,
+		ValueType:    badaasModels.StringValueType,
 		Required:     true,
 	}
-	bodyAttr := &models.Attribute{
+	bodyAttr := &badaasModels.Attribute{
 		Name:          "body",
-		ValueType:     models.StringValueType,
+		ValueType:     badaasModels.StringValueType,
 		Default:       false,
 		DefaultString: "empty",
 	}
-	ownerAttr := &models.Attribute{
+	ownerAttr := &badaasModels.Attribute{
 		Name:      "ownerID",
-		ValueType: models.StringValueType,
+		ValueType: badaasModels.StringValueType,
 		Required:  true,
 	}
 
@@ -87,19 +88,19 @@ func CreateEAVCRUDObjects(logger *zap.Logger, db *gorm.DB) {
 	)
 
 	// instantiation of a Post
-	whyCatsLikeMice := &models.Entity{
+	whyCatsLikeMice := &badaasModels.Entity{
 		EntityTypeID: postType.ID,
 		EntityType:   postType,
 	}
-	titleVal, _ := models.NewStringValue(titleAttr, "Why cats like mice?")
-	bodyVal, _ := models.NewStringValue(bodyAttr,
+	titleVal, _ := badaasModels.NewStringValue(titleAttr, "Why cats like mice?")
+	bodyVal, _ := badaasModels.NewStringValue(bodyAttr,
 		`Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 		In consectetur, ex at hendrerit lobortis, tellus lorem blandit eros, vel ornare odio lorem eget nisi.
 
 		In erat mi, pharetra ut lacinia at, facilisis vitae nunc.
 	`)
-	ownerVal, _ := models.NewStringValue(ownerAttr, userID)
+	ownerVal, _ := badaasModels.NewStringValue(ownerAttr, userID)
 
 	whyCatsLikeMice.Fields = append(whyCatsLikeMice.Fields,
 		titleVal, bodyVal, ownerVal,

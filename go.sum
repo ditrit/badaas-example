@@ -80,6 +80,8 @@ github.com/ditrit/badaas v0.0.0-20230509204947-e2e9f8693c51 h1:x6wJ4IRt+Ah+aNlAa
 github.com/ditrit/badaas v0.0.0-20230509204947-e2e9f8693c51/go.mod h1:U4QouMrBimJX+u0l0wdokzep3e/ohnihGZ5il4TU1yo=
 github.com/ditrit/badaas v0.0.0-20230510145315-be747346f875 h1:MN+nK4gD9RkW4IfZQE5I4y6MJo0yn64ly7pNhB270UY=
 github.com/ditrit/badaas v0.0.0-20230510145315-be747346f875/go.mod h1:b9vdRce9/mxqdfWwXoO0iwTBpALfAt1Ax1eO2PdArPo=
+github.com/ditrit/badaas v0.0.0-20230511123738-9aabb63ce7f3 h1:ybIuPCOLioJW0m0c5FopOLyxtgY03QfpCgCTadrbzaE=
+github.com/ditrit/badaas v0.0.0-20230511123738-9aabb63ce7f3/go.mod h1:b9vdRce9/mxqdfWwXoO0iwTBpALfAt1Ax1eO2PdArPo=
 github.com/ditrit/verdeter v0.4.0 h1:DzEOFauuXEGNQYP6OgYtHwEyb3w9riem99u0xE/l7+o=
 github.com/ditrit/verdeter v0.4.0/go.mod h1:sKpWuOvYqNabLN4aNXqeBhcWpt7nf0frwqk0B5M6ax0=
 github.com/elliotchance/pie/v2 v2.5.2 h1:jRENMmysCljhUmyT8ITKV0Atp6Lukm3XpeqaI87POsM=
@@ -387,6 +389,8 @@ golang.org/x/exp v0.0.0-20200207192155-f17229e696bd/go.mod h1:J/WKrq2StrnmMY6+EH
 golang.org/x/exp v0.0.0-20200224162631-6cc2880d07d6/go.mod h1:3jZMyOhIsHpP37uCMkUooju7aAi5cS1Q23tOzKc+0MU=
 golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53 h1:5llv2sWeaMSnA3w2kS57ouQQ4pudlXrR0dCgw51QK9o=
 golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53/go.mod h1:V1LtkGg67GoY2N1AnLN78QLrzxkLyJw7RJb1gzOOz9w=
+golang.org/x/exp v0.0.0-20230510235704-dd950f8aeaea h1:vLCWI/yYrdEHyN2JzIzPO3aaQJHQdp89IZBA/+azVC4=
+golang.org/x/exp v0.0.0-20230510235704-dd950f8aeaea/go.mod h1:V1LtkGg67GoY2N1AnLN78QLrzxkLyJw7RJb1gzOOz9w=
 golang.org/x/image v0.0.0-20190227222117-0694c2d4d067/go.mod h1:kZ7UVZpmo3dzQBMxlp+ypCbDeSB+sBbTgSJuh5dn5js=
 golang.org/x/image v0.0.0-20190802002840-cff245a6509b/go.mod h1:FeLwcggjj3mMvU+oOTbSwawSJRM1uh48EjtB4UJZlP0=
 golang.org/x/lint v0.0.0-20181026193005-c67002cb31c3/go.mod h1:UVdnD1Gm6xHRNCYTkRU2/jEulfH38KcIWyp/GAMgvoE=
