@@ -181,7 +181,7 @@ http GET localhost:8000/objects/sale seller_id=29b027c0-184a-42a7-950e-a5c9b9d6b
         "UpdatedAt": "2023-05-10T08:32:11.754637Z"
     }
 ]
-```json
+```
 
 This is equivalent to:
 

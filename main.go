@@ -7,7 +7,7 @@ import (
 	"github.com/ditrit/badaas"
 	"github.com/ditrit/badaas-example/controllers"
 	"github.com/ditrit/badaas-example/models"
-	badaasControllers "github.com/ditrit/badaas/controllers"
+	"github.com/ditrit/badaas/router"
 	"github.com/ditrit/verdeter"
 	"github.com/spf13/cobra"
 	"go.uber.org/fx"
@@ -41,9 +41,9 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 
 		fx.Provide(NewAPIVersion),
 		// add routes provided by badaas
-		badaasControllers.InfoControllerModule,
+		router.InfoRouteModule,
 		// badaasControllers.AuthControllerModule,
-		badaasControllers.EAVControllerModule,
+		router.EAVRoutesModule,
 
 		// start example routes
 		fx.Provide(controllers.NewHelloController),
@@ -53,12 +53,10 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 		// fx.Invoke(CreateEAVCRUDObjects),
 
 		// start example data
-		badaasControllers.GetCRUDControllerModule[models.Company](),
-		badaasControllers.GetCRUDControllerModule[models.Product](),
-		badaasControllers.GetCRUDControllerModule[models.Seller](),
-		badaasControllers.GetCRUDControllerModule[models.Sale](),
-		fx.Provide(NewEntityMapping),
-		badaasControllers.CRUDControllerModule,
+		router.GetCRUDRoutesModule[models.Company](),
+		router.GetCRUDRoutesModule[models.Product](),
+		router.GetCRUDRoutesModule[models.Seller](),
+		router.GetCRUDRoutesModule[models.Sale](),
 		// fx.Invoke(CreateCRUDObjects),
 
 		// create httpServer
@@ -70,20 +68,4 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 
 func NewAPIVersion() *semver.Version {
 	return semver.MustParse("0.0.0-unreleased")
-}
-
-type EntityMappingParams struct {
-	fx.In
-
-	// TODO ver como sacar este models.
-	// TODO esto hasta se podria hacer automaticamente
-	ProductsCRUDController badaasControllers.CRUDController `name:"models.ProductCRUDController"`
-	SalesCRUDController    badaasControllers.CRUDController `name:"models.SaleCRUDController"`
-}
-
-func NewEntityMapping(params EntityMappingParams) map[string]badaasControllers.CRUDController {
-	return map[string]badaasControllers.CRUDController{
-		"product": params.ProductsCRUDController,
-		"sale":    params.SalesCRUDController,
-	}
 }

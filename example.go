@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/ditrit/badaas-example/models"
+	"github.com/ditrit/badaas/badorm"
 	badaasModels "github.com/ditrit/badaas/persistence/models"
-	"github.com/ditrit/badaas/services"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
@@ -113,7 +113,7 @@ func CreateEAVCRUDObjects(logger *zap.Logger, db *gorm.DB) {
 func CreateCRUDObjects(
 	logger *zap.Logger,
 	db *gorm.DB,
-	crudProductService services.CRUDService[models.Product, uuid.UUID],
+	crudProductService badorm.CRUDService[models.Product, uuid.UUID],
 ) {
 	logger.Sugar().Info("Setting up CRUD example")
 

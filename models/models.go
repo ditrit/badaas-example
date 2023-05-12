@@ -39,19 +39,3 @@ type Sale struct {
 	Seller   *Seller
 	SellerID uuid.UUID
 }
-
-func (Product) TableName() string {
-	return "products"
-}
-
-func (Sale) TableName() string {
-	return "sales"
-}
-
-func (Company) TableName() string {
-	return "companies"
-}
-
-func (Seller) TableName() string {
-	return "sellers"
-}
