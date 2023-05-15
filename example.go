@@ -113,17 +113,19 @@ func CreateEAVCRUDObjects(logger *zap.Logger, db *gorm.DB) {
 func CreateCRUDObjects(
 	logger *zap.Logger,
 	db *gorm.DB,
-	crudProductService badorm.CRUDService[models.Product, uuid.UUID],
+	crudProductRepository badorm.CRUDRepository[models.Product, uuid.UUID],
 ) {
 	logger.Sugar().Info("Setting up CRUD example")
 
-	product1, _ := crudProductService.CreateEntity(map[string]any{
-		"int": 1,
-	})
+	product1 := &models.Product{
+		Int: 1,
+	}
+	_ = crudProductRepository.Create(db, product1)
 
-	product2, _ := crudProductService.CreateEntity(map[string]any{
-		"int": 2,
-	})
+	product2 := &models.Product{
+		Int: 2,
+	}
+	_ = crudProductRepository.Create(db, product2)
 
 	company1 := &models.Company{
 		Name: "ditrit",
