@@ -1,19 +1,19 @@
 package models
 
 import (
-	"github.com/ditrit/badaas/persistence/models"
+	"github.com/ditrit/badaas/badorm"
 	"github.com/google/uuid"
 )
 
 type Company struct {
-	models.BaseModel
+	badorm.UUIDModel
 
 	Name    string
 	Sellers []Seller
 }
 
 type Product struct {
-	models.BaseModel
+	badorm.UUIDModel
 
 	String string
 	Int    int
@@ -22,14 +22,14 @@ type Product struct {
 }
 
 type Seller struct {
-	models.BaseModel
+	badorm.UUIDModel
 
 	Name      string
 	CompanyID *uuid.UUID
 }
 
 type Sale struct {
-	models.BaseModel
+	badorm.UUIDModel
 
 	// belongsTo Product
 	Product   *Product
