@@ -7,6 +7,7 @@ import (
 	"github.com/ditrit/badaas"
 	"github.com/ditrit/badaas-example/controllers"
 	"github.com/ditrit/badaas-example/models"
+	"github.com/ditrit/badaas/badorm"
 	"github.com/ditrit/badaas/router"
 	"github.com/ditrit/verdeter"
 	"github.com/spf13/cobra"
@@ -31,7 +32,7 @@ func main() {
 // Run the http server for badaas
 func runHTTPServer(cmd *cobra.Command, args []string) {
 	fx.New(
-		// Modules
+		fx.Provide(GetModels),
 		badaas.BadaasModule,
 
 		// logger for fx
@@ -50,14 +51,14 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 		fx.Invoke(AddExampleRoutes),
 
 		// start example eav data
-		// fx.Invoke(CreateEAVCRUDObjects),
+		fx.Invoke(CreateEAVCRUDObjects),
 
 		// start example data
 		router.GetCRUDRoutesModule[models.Company](),
 		router.GetCRUDRoutesModule[models.Product](),
 		router.GetCRUDRoutesModule[models.Seller](),
 		router.GetCRUDRoutesModule[models.Sale](),
-		// fx.Invoke(CreateCRUDObjects),
+		fx.Invoke(CreateCRUDObjects),
 
 		// create httpServer
 		fx.Provide(NewHTTPServer),
@@ -68,4 +69,15 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 
 func NewAPIVersion() *semver.Version {
 	return semver.MustParse("0.0.0-unreleased")
+}
+
+func GetModels() badorm.GetModelsResult {
+	return badorm.GetModelsResult{
+		Models: []any{
+			models.Product{},
+			models.Company{},
+			models.Seller{},
+			models.Sale{},
+		},
+	}
 }
