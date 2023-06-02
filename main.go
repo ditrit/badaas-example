@@ -5,6 +5,7 @@ import (
 
 	"github.com/Masterminds/semver/v3"
 	"github.com/ditrit/badaas"
+	"github.com/ditrit/badaas/configuration"
 	badaasControllers "github.com/ditrit/badaas/controllers"
 	"github.com/ditrit/verdeter"
 	"github.com/spf13/cobra"
@@ -21,7 +22,10 @@ var rootCfg = verdeter.BuildVerdeterCommand(verdeter.VerdeterConfig{
 })
 
 func main() {
-	badaas.ConfigCommandParameters(rootCfg)
+	err := configuration.NewCommandInitializer().Init(rootCfg)
+	if err != nil {
+		panic(err)
+	}
 
 	rootCfg.Execute()
 }
