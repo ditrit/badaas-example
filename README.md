@@ -27,7 +27,7 @@ For more information about `badctl` refer to [badctl Docs](https://github.com/di
 Finally, you can run the api with:
 
 ```bash
-badctl run
+make badaas_run
 ```
 
 The api will be available at <http://localhost:8000>.
