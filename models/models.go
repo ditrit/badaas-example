@@ -2,7 +2,6 @@ package models
 
 import (
 	"github.com/ditrit/badaas/badorm"
-	"github.com/google/uuid"
 )
 
 type Company struct {
@@ -25,7 +24,7 @@ type Seller struct {
 	badorm.UUIDModel
 
 	Name      string
-	CompanyID *uuid.UUID
+	CompanyID *badorm.UUID
 }
 
 type Sale struct {
@@ -33,9 +32,9 @@ type Sale struct {
 
 	// belongsTo Product
 	Product   *Product
-	ProductID uuid.UUID
+	ProductID badorm.UUID
 
 	// belongsTo Seller
 	Seller   *Seller
-	SellerID uuid.UUID
+	SellerID badorm.UUID
 }

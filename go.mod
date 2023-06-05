@@ -4,9 +4,8 @@ go 1.18
 
 require (
 	github.com/Masterminds/semver/v3 v3.2.1
-	github.com/ditrit/badaas v0.0.0-20230605101443-3c31181f2360
+	github.com/ditrit/badaas v0.0.0-20230605130334-6877c753ad71
 	github.com/ditrit/verdeter v0.4.0
-	github.com/google/uuid v1.3.0
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/cobra v1.7.0
@@ -20,6 +19,8 @@ require (
 	github.com/elliotchance/pie/v2 v2.5.2 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
+	github.com/go-sql-driver/mysql v1.7.0 // indirect
+	github.com/google/uuid v1.3.0 // indirect
 	github.com/goph/emperror v0.17.2 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
@@ -56,5 +57,6 @@ require (
 	golang.org/x/text v0.9.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
+	gorm.io/driver/mysql v1.5.1 // indirect
 	gorm.io/driver/postgres v1.5.2 // indirect
 )

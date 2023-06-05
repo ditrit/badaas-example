@@ -5,7 +5,6 @@ import (
 	"github.com/ditrit/badaas/badorm"
 	badaasModels "github.com/ditrit/badaas/persistence/models"
 	"github.com/ditrit/badaas/services"
-	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
@@ -128,7 +127,7 @@ func CreateEAVCRUDObjects(
 func CreateCRUDObjects(
 	logger *zap.Logger,
 	db *gorm.DB,
-	crudProductRepository badorm.CRUDRepository[models.Product, uuid.UUID],
+	crudProductRepository badorm.CRUDRepository[models.Product, badorm.UUID],
 ) error {
 	products, err := crudProductRepository.GetAll(db)
 	if err != nil {
