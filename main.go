@@ -8,6 +8,7 @@ import (
 	"github.com/ditrit/badaas-example/controllers"
 	"github.com/ditrit/badaas-example/models"
 	"github.com/ditrit/badaas/badorm"
+	"github.com/ditrit/badaas/configuration"
 	"github.com/ditrit/badaas/router"
 	"github.com/ditrit/verdeter"
 	"github.com/spf13/cobra"
@@ -24,7 +25,10 @@ var rootCfg = verdeter.BuildVerdeterCommand(verdeter.VerdeterConfig{
 })
 
 func main() {
-	badaas.ConfigCommandParameters(rootCfg)
+	err := configuration.NewCommandInitializer().Init(rootCfg)
+	if err != nil {
+		panic(err)
+	}
 
 	rootCfg.Execute()
 }

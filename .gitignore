@@ -27,5 +27,7 @@ go.work
 _temp
 
 # badaas generated files
+# TODO delete this in your project
 badaas/*
 .dockerignore
+Makefile
