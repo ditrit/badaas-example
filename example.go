@@ -129,7 +129,7 @@ func CreateCRUDObjects(
 	db *gorm.DB,
 	crudProductRepository badorm.CRUDRepository[models.Product, badorm.UUID],
 ) error {
-	products, err := crudProductRepository.GetAll(db)
+	products, err := crudProductRepository.Query(db)
 	if err != nil {
 		return err
 	}

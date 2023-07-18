@@ -203,4 +203,5 @@ http GET localhost:8000/objects/sale seller:='{"company":{"name":"ditrit"}}'
 
 ## Explanation
 
-To understand why this example was made in this way refer to [BadAas Docs](https://github.com/ditrit/badaas/README.md#step-by-step-instructions).
+<!-- TODO add link to new docs -->
+To understand why this example was made in this way refer to BaDaaS Docs.
