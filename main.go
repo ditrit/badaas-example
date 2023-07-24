@@ -19,7 +19,7 @@ import (
 var rootCfg = verdeter.BuildVerdeterCommand(verdeter.VerdeterConfig{
 	Use:   "badaas-example",
 	Short: "Example of BadAss",
-	Long:  "A HTTP server build over BadAas that uses its Login features",
+	Long:  "A HTTP server build over BadAas that uses its Login and Object Storage features",
 	Run:   runHTTPServer,
 })
 
