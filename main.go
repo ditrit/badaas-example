@@ -6,7 +6,6 @@ import (
 	"github.com/Masterminds/semver/v3"
 	"github.com/ditrit/badaas"
 	"github.com/ditrit/badaas-example/controllers"
-	"github.com/ditrit/badaas-example/models"
 	"github.com/ditrit/badaas/badorm"
 	"github.com/ditrit/badaas/configuration"
 	"github.com/ditrit/badaas/router"
@@ -53,15 +52,6 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 		fx.Provide(controllers.NewHelloController),
 		fx.Invoke(AddExampleRoutes),
 
-		// start example eav data
-
-		// start example data
-		router.GetCRUDRoutesModule[models.Company](),
-		router.GetCRUDRoutesModule[models.Product](),
-		router.GetCRUDRoutesModule[models.Seller](),
-		router.GetCRUDRoutesModule[models.Sale](),
-		fx.Invoke(CreateCRUDObjects),
-
 		// create httpServer
 		fx.Provide(NewHTTPServer),
 		// Finally: we invoke the newly created server
@@ -75,11 +65,6 @@ func NewAPIVersion() *semver.Version {
 
 func GetModels() badorm.GetModelsResult {
 	return badorm.GetModelsResult{
-		Models: []any{
-			models.Product{},
-			models.Company{},
-			models.Seller{},
-			models.Sale{},
-		},
+		Models: []any{},
 	}
 }

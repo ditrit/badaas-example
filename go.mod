@@ -11,7 +11,6 @@ require (
 	github.com/spf13/cobra v1.7.0
 	go.uber.org/fx v1.19.3
 	go.uber.org/zap v1.24.0
-	gorm.io/gorm v1.25.1
 )
 
 require (
@@ -58,4 +57,5 @@ require (
 	gorm.io/driver/postgres v1.5.2 // indirect
 	gorm.io/driver/sqlite v1.5.1 // indirect
 	gorm.io/driver/sqlserver v1.5.0 // indirect
+	gorm.io/gorm v1.25.1 // indirect
 )
