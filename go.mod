@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/Masterminds/semver/v3 v3.2.1
-	github.com/ditrit/badaas v0.0.0-20230724123240-4b2ce9f5e89a
+	github.com/ditrit/badaas v0.0.0-20230724150419-b7b57a60f173
 	github.com/ditrit/verdeter v0.4.0
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
