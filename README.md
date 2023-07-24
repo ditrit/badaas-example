@@ -18,7 +18,7 @@ go install github.com/ditrit/badaas/tools/badctl
 Then generate files to make this project work with `cockroach` as database:
 
 ```bash
-badctl gen --db_provider cockroachdb
+badctl gen docker --db_provider cockroachdb
 ```
 
 For more information about `badctl` refer to [badctl Docs](https://github.com/ditrit/badaas/tools/badctl/README.md).
