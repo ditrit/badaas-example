@@ -53,8 +53,6 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 		fx.Provide(controllers.NewHelloController),
 		fx.Invoke(AddExampleRoutes),
 
-		// start example eav data
-
 		// start example data
 		router.GetCRUDRoutesModule[models.Company](),
 		router.GetCRUDRoutesModule[models.Product](),
