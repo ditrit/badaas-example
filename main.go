@@ -48,14 +48,12 @@ func runHTTPServer(cmd *cobra.Command, args []string) {
 		// add routes provided by badaas
 		router.InfoRouteModule,
 		// badaasControllers.AuthControllerModule,
-		router.EAVRoutesModule,
 
 		// start example routes
 		fx.Provide(controllers.NewHelloController),
 		fx.Invoke(AddExampleRoutes),
 
 		// start example eav data
-		fx.Invoke(CreateEAVCRUDObjects),
 
 		// start example data
 		router.GetCRUDRoutesModule[models.Company](),
