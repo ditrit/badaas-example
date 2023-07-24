@@ -4,16 +4,18 @@ go 1.18
 
 require (
 	github.com/Masterminds/semver/v3 v3.2.1
-	github.com/ditrit/badaas v0.0.0-20230724123240-4b2ce9f5e89a
+	github.com/ditrit/badaas v0.0.0-20230724150345-209a2cfe477d
 	github.com/ditrit/verdeter v0.4.0
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
 	github.com/spf13/cobra v1.7.0
 	go.uber.org/fx v1.19.3
 	go.uber.org/zap v1.24.0
+	gorm.io/gorm v1.25.1
 )
 
 require (
+	github.com/Masterminds/squirrel v1.5.4 // indirect
 	github.com/elliotchance/pie/v2 v2.6.0 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
@@ -29,6 +31,8 @@ require (
 	github.com/jackc/pgx/v5 v5.3.1 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
+	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
+	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mattn/go-sqlite3 v1.14.17 // indirect
 	github.com/microsoft/go-mssqldb v1.1.0 // indirect
@@ -57,5 +61,4 @@ require (
 	gorm.io/driver/postgres v1.5.2 // indirect
 	gorm.io/driver/sqlite v1.5.1 // indirect
 	gorm.io/driver/sqlserver v1.5.0 // indirect
-	gorm.io/gorm v1.25.1 // indirect
 )
