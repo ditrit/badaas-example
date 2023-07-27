@@ -11,7 +11,7 @@
 This project uses `badctl` to generate the files that allow us to run this example. For installing it, use:
 
 ```bash
-go install github.com/ditrit/badaas/tools/badctl@249d3c0
+go install github.com/ditrit/badaas/tools/badctl@8da69f3
 ```
 
 Then generate files to make this project work with `cockroach` as database:

@@ -66,14 +66,8 @@ github.com/creack/pty v1.1.7/go.mod h1:lj5s0c3V2DBrqTV7llrYr5NG6My20zk30Fl46Y7Do
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/ditrit/badaas v0.0.0-20230726142308-c220140fae7d h1:QRWhbjxw18D5aa3v07W2K/WqYFUoVvy+gdBMacAwZ7U=
-github.com/ditrit/badaas v0.0.0-20230726142308-c220140fae7d/go.mod h1:Kzcdf0Rj5vIgcqlEgF6v8dpZrs2ym3wMW42JSV3M54c=
-github.com/ditrit/badaas v0.0.0-20230726142951-9f0d3b9d994d h1:PBboVrNivS+tDpy5ivK4BF23mBq/EOGgY9SU6SOgZP0=
-github.com/ditrit/badaas v0.0.0-20230726142951-9f0d3b9d994d/go.mod h1:Kzcdf0Rj5vIgcqlEgF6v8dpZrs2ym3wMW42JSV3M54c=
-github.com/ditrit/badaas v0.0.0-20230726143641-1cd00c707516 h1:YIE1tHXCyr4DtVy5CRbucRiuGJrVsmdMSeauHshs0ns=
-github.com/ditrit/badaas v0.0.0-20230726143641-1cd00c707516/go.mod h1:Kzcdf0Rj5vIgcqlEgF6v8dpZrs2ym3wMW42JSV3M54c=
-github.com/ditrit/badaas v0.0.0-20230726151210-249d3c0c9dab h1:TVLjjd0I7vflPmjmjFr2KQ5gXUYl2/toNNGKiyN+wEs=
-github.com/ditrit/badaas v0.0.0-20230726151210-249d3c0c9dab/go.mod h1:Kzcdf0Rj5vIgcqlEgF6v8dpZrs2ym3wMW42JSV3M54c=
+github.com/ditrit/badaas v0.0.0-20230727094600-8da69f3d4479 h1:Nu34OfkfqFjqOtmg/M3MVyktYz5hBqGh6RSpflpv8E8=
+github.com/ditrit/badaas v0.0.0-20230727094600-8da69f3d4479/go.mod h1:Kzcdf0Rj5vIgcqlEgF6v8dpZrs2ym3wMW42JSV3M54c=
 github.com/ditrit/verdeter v0.4.0 h1:DzEOFauuXEGNQYP6OgYtHwEyb3w9riem99u0xE/l7+o=
 github.com/ditrit/verdeter v0.4.0/go.mod h1:sKpWuOvYqNabLN4aNXqeBhcWpt7nf0frwqk0B5M6ax0=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
