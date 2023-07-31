@@ -8,19 +8,19 @@
 
 ## Set up
 
-This project uses `badctl` to generate the files that allow us to run this example. For installing it, use:
+This project uses `badaas-cli` to generate the files that allow us to run this example. For installing it, use:
 
 ```bash
-go install github.com/ditrit/badaas/tools/badctl@8da69f3
+go install github.com/ditrit/badaas-cli
 ```
 
 Then generate files to make this project work with `cockroach` as database:
 
 ```bash
-badctl gen
+badaas-cli gen
 ```
 
-For more information about `badctl` refer to [badctl Docs](https://github.com/ditrit/badaas/tools/badctl/README.md).
+For more information about `badaas-cli` refer to [badaas-cli Docs](https://github.com/ditrit/badaas-cli/README.md).
 
 Finally, you can run the api with:
 
