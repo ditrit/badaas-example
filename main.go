@@ -3,13 +3,12 @@ package main
 import (
 	"github.com/Masterminds/semver/v3"
 	"github.com/ditrit/badaas"
-	"github.com/ditrit/badaas/controllers"
 )
 
 func main() {
 	badaas.BaDaaS.AddModules(
-		controllers.InfoControllerModule,
-		controllers.AuthControllerModule,
+		badaas.InfoModule,
+		badaas.AuthModule,
 	).Provide(
 		NewAPIVersion,
 		NewHelloController,
