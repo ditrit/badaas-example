@@ -60,4 +60,5 @@ Date: Thu, 04 May 2023 09:32:29 GMT
 
 ## Explanation
 
+<!-- TODO add link to new docs -->
 To understand why this example was made in this way refer to [BaDaaS Docs](https://github.com/ditrit/badaas/README.md#step-by-step-instructions).
