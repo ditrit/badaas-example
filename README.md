@@ -17,7 +17,7 @@ go install github.com/ditrit/badaas-cli
 Then generate files to make this project work with `cockroach` as database:
 
 ```bash
-badaas-cli gen
+badaas-cli gen docker
 ```
 
 For more information about `badaas-cli` refer to [badaas-cli Docs](https://github.com/ditrit/badaas-cli/README.md).
