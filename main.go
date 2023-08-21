@@ -10,6 +10,11 @@ func main() {
 	badaas.BaDaaS.AddModules(
 		controllers.InfoControllerModule,
 		controllers.AuthControllerModule,
+	).Provide(
+		NewAPIVersion,
+		NewHelloController,
+	).Invoke(
+		AddExampleRoutes,
 	).Start()
 }
 
